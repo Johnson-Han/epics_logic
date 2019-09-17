@@ -1,0 +1,52 @@
+record(bi, "$(user):biS")
+{
+	field(DESC, "Set input")
+      field(FLNK, "$(user):RS")
+      field(SCAN,".1 second")
+	field(INP,"CA LINK")
+        field(ZNAM," close")
+        field(ONAM,"open")
+}
+
+record(bi, "$(user):biR")
+{
+	field(DESC, "reset input")
+	field(SCAN,".1 second")
+      field(FLNK, "$(user):RS")
+	field(INP,"CA LINK")
+        field(ZNAM," close")
+        field(ONAM,"open")
+}
+
+
+
+record(bo, "$(user):RSOut")
+
+{
+	field(DESC, "RS Output")
+      field(DOL,"$(user):RS NPP NMS")
+	field(SCAN,"Passive")
+        field(OMSL,"closed_loop")
+
+}
+
+record(calc, "$(user):RS")
+{
+	field(DESC, "RS")
+
+	field(FLNK, "$(user):RSOut")
+	field(CALC, "A && (!B) || ( (!B) && C )")
+	field(INPA, "$(user):biS.VAL  NPP NMS")
+	field(INPB, "$(user):biR.VAL  NPP NMS")
+	field(INPC, "$(user):RS.VAL  NPP NMS")
+	field(EGU, "Counts")
+	field(HOPR, "10")
+	field(HIHI, "8")
+	field(HIGH, "6")
+	field(LOW, "4")
+	field(LOLO, "2")
+	field(HHSV, "MAJOR")
+	field(HSV, "MINOR")
+	field(LSV, "MINOR")
+	field(LLSV, "MAJOR")
+}

@@ -35,7 +35,7 @@ record(calc, "$(user):RS")
 	field(DESC, "RS")
 
 	field(FLNK, "$(user):RSOut")
-	field(CALC, "A && (!B) || ( (!B) && C )")
+	field(CALC, "(A && (!B)) || ( (!B) && C )")
 	field(INPA, "$(user):biS.VAL  NPP NMS")
 	field(INPB, "$(user):biR.VAL  NPP NMS")
 	field(INPC, "$(user):RS.VAL  NPP NMS")
